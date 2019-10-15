@@ -25,7 +25,13 @@ m=0
 canv = Canvas(root,bg='white')
 canv.pack(fill=BOTH,expand=1)
 
-name=input('type your name')
+name_entry = 'ANONIM'
+name_label = Label(text = 'PLEASE ENTER YOUR NAME:')
+name_label.pack()
+name_entry = Entry()
+name_entry.pack()
+name_entry.insert(0, "ANONIM")
+
 
 def new_ball():
     global x,y,r,dx,dy,boo
@@ -67,9 +73,11 @@ def new_ball1():
 
 new_ball1()
 new_ball()
+name=' '
 
 def click(event):
-    global count,x1,y1,r1,dx1,dy1,boo1,m,x,y,r,dx,dy,boo
+    global count,x1,y1,r1,dx1,dy1,boo1,m,x,y,r,dx,dy,boo,name
+    name = name_entry.get()
     if count > m:
         m = count
     if (r1 > 0) and (((x1 - event.x)*(x1 - event.x) + (y1 - event.y)*(y1 - event.y)) <= r1*r1):
