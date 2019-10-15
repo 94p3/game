@@ -1,0 +1,57 @@
+from tkinter import *
+import random
+boo=1
+r = random.randint(30, 50)
+x = random.randint(100, 700)
+y = random.randint(100, 500)
+count=0
+root=Tk()
+root.geometry('1620x700')
+m=0
+canv = Canvas(root,bg='purple')
+canv.pack(fill=BOTH,expand=1)
+
+def new_ball():
+    global x,y,r,boo
+    canv.delete('sos')
+    canv.create_oval(x - r, y - r, x + r, y + r, fill="black", width=0,tag='sos')
+    if r>0:
+        r-=1
+    if boo==1:
+        root.after(500, new_ball)
+
+
+
+new_ball()
+
+def click(event):
+    global count,x,y,r,boo,m
+
+
+    if (r>0)and((x-event.x)^2+(y-event.y)^2<=r^2):
+        count+=1
+        button1['text'] = 'count', count
+        button2['text'] = 'max', m
+        boo=1
+    else:
+        count=0
+        button1['text']='count', count
+        button2['text'] ='max', m
+        boo=0
+    if count>m:
+        m=count
+    r = random.randint(30, 50)
+    x = random.randint(100, 700)
+    y = random.randint(100, 500)
+    new_ball()
+
+
+
+button1=Label(root,text='count 0',width=25,height=1,bg='purple',fg='red',font='arial 14')
+button1.pack()
+button2=Label(root,text='max 0',width=25,height=1,bg='purple',fg='red',font='arial 14')
+button2.pack()
+
+canv.bind('<Button-1>', click)
+
+root.mainloop()
