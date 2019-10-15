@@ -20,7 +20,8 @@ x1 = random.randint(100, 700)
 y1 = random.randint(100, 500)
 count=0
 root=Tk()
-root.geometry('1620x700')
+root.geometry('1000x600')
+root.resizable(width=False, height=False)
 m=0
 canv = Canvas(root,bg='white')
 canv.pack(fill=BOTH,expand=1)
