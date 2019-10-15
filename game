@@ -22,7 +22,7 @@ count=0
 root=Tk()
 root.geometry('1620x700')
 m=0
-canv = Canvas(root,bg='purple')
+canv = Canvas(root,bg='white')
 canv.pack(fill=BOTH,expand=1)
 
 name=input('type your name')
@@ -40,7 +40,7 @@ def new_ball():
     else:
         y-=dy
         dy=-dy
-    canv.create_oval(x - r, y - r, x + r, y + r, fill="black", width=0,tag='obj1')
+    canv.create_oval(x - r, y - r, x + r, y + r, fill="purple", width=0,tag='obj1')
     if r>0:
         r-=1
     if boo==1:
@@ -110,9 +110,9 @@ def click(event):
 
 
 
-button1=Label(root,text='count 0',width=25,height=1,bg='purple',fg='red',font='arial 14')
+button1=Label(root,text='count 0',width=25,height=1,bg='white',fg='red',font='arial 14')
 button1.pack()
-button2=Label(root,text='max 0',width=25,height=1,bg='purple',fg='red',font='arial 14')
+button2=Label(root,text='max 0',width=25,height=1,bg='white',fg='red',font='arial 14')
 button2.pack()
 
 canv.bind('<Button-1>', click)
