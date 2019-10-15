@@ -10,6 +10,7 @@ dy1=0
 boo1=1
 boo=1
 
+f=open('e.txt','a')
 r = random.randint(30, 50)
 x = random.randint(100, 700)
 y = random.randint(100, 500)
@@ -22,6 +23,8 @@ root.geometry('1620x700')
 m=0
 canv = Canvas(root,bg='purple')
 canv.pack(fill=BOTH,expand=1)
+
+name=input('type your name')
 
 def new_ball():
     global x,y,r,dx,dy,boo
@@ -66,6 +69,8 @@ new_ball()
 
 def click(event):
     global count,x1,y1,r1,dx1,dy1,boo1,m,x,y,r,dx,dy,boo
+    if count > m:
+        m = count
     if (r1 > 0) and (((x1 - event.x)*(x1 - event.x) + (y1 - event.y)*(y1 - event.y)) <= r1*r1):
         print((x1 - event.x)^2,'x',(y1 - event.y)^2,'y')
         count += 1
@@ -85,8 +90,7 @@ def click(event):
             boo = 0
             boo1 = 0
 
-    if count > m:
-        m = count
+
 
     r1 = random.randint(30, 50)
     x1 = random.randint(100, 700)
@@ -104,6 +108,8 @@ def click(event):
 
 
 
+
+
 button1=Label(root,text='count 0',width=25,height=1,bg='purple',fg='red',font='arial 14')
 button1.pack()
 button2=Label(root,text='max 0',width=25,height=1,bg='purple',fg='red',font='arial 14')
@@ -112,3 +118,8 @@ button2.pack()
 canv.bind('<Button-1>', click)
 
 root.mainloop()
+
+f.write(name+'\n')
+f.flush()
+f.write(str(m))
+f.flush()
