@@ -11,6 +11,7 @@ boo1=1
 boo=1
 
 f=open('e.txt','a')
+
 r = random.randint(30, 50)
 x = random.randint(100, 700)
 y = random.randint(100, 500)
@@ -118,7 +119,7 @@ canv.bind('<Button-1>', click)
 
 root.mainloop()
 
-f.write(name+'\n')
+f.write(name+' ')
 f.flush()
-f.write(str(m))
+f.write(str(m)+'\n')
 f.flush()
