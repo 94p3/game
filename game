@@ -1,5 +1,9 @@
 from tkinter import *
 import random
+
+dx=0
+dy=0
+
 boo=1
 r = random.randint(30, 50)
 x = random.randint(100, 700)
@@ -12,9 +16,19 @@ canv = Canvas(root,bg='purple')
 canv.pack(fill=BOTH,expand=1)
 
 def new_ball():
-    global x,y,r,boo
-    canv.delete('sos')
-    canv.create_oval(x - r, y - r, x + r, y + r, fill="black", width=0,tag='sos')
+    global x,y,r,dx,dy,boo
+    canv.delete('obj1')
+    if (x>0)and(x<1000):
+        x+=dx
+    else:
+        x-=dx
+        dx=-dx
+    if (y>0)and(y<500):
+        y+=dy
+    else:
+        y-=dy
+        dy=-dy
+    canv.create_oval(x - r, y - r, x + r, y + r, fill="black", width=0,tag='obj1')
     if r>0:
         r-=1
     if boo==1:
@@ -25,7 +39,7 @@ def new_ball():
 new_ball()
 
 def click(event):
-    global count,x,y,r,boo,m
+    global count,x,y,r,dx,dy,boo,m
 
 
     if (r>0)and((x-event.x)^2+(y-event.y)^2<=r^2):
@@ -43,6 +57,8 @@ def click(event):
     r = random.randint(30, 50)
     x = random.randint(100, 700)
     y = random.randint(100, 500)
+    dx = random.randint(-5,5)
+    dy = random.randint(-5,5)
     new_ball()
 
 
